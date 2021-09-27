@@ -8,7 +8,7 @@ package display;
 
 import controler.Subject;
 import controler.WeatherData;
-//java.util.Observer interface
+
 /*
 As usual, implement the Observer interface (this time the java.util.Observer
 interface) and call addObserver() on any Observable object. Likewise, to remove
@@ -17,7 +17,7 @@ yourself as an observer just call deleteObserver().
 
 
 
-public class CurrentConditionsDisplay extends Observer implements Display {
+public class CurrentConditionsDisplay implements Observer, Display {
     
     private float temperature;
     private float humidity;
@@ -28,19 +28,28 @@ public class CurrentConditionsDisplay extends Observer implements Display {
         weatherData.registerObserver(this);
     }
     
+    public void removeFromObservers() {
+        weatherData.deletObserver(this);
+    }
+    /*
+    public void update(float temperature, float humidity, float pressure) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+        display();
+    }*/
+    
     public void update(Subject s) {
         if (s instanceof WeatherData){
             WeatherData w = (WeatherData) s;
             this.temperature = w.getTemperature();
             this.humidity = w.getHumidity();
             display(); 
-        }
-         
+        }      
     }
     
     public void display() {
         System.out.println("Current conditions: " + temperature 
-            + "F degrees and " + humidity + " humidity");
+            + "F degrees and " + humidity + "% humidity");
     }
     
 }

@@ -17,7 +17,7 @@ Then, call one of two notifyObservers() methods:
 either notifyObservers() or notifyObservers(Object arg)
 */
 
-public abstract class Subject {
+public interface Subject {
     
     public abstract void registerObserver(Observer o);
     

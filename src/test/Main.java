@@ -18,6 +18,7 @@ public class Main {
         WeatherData weatherData = new WeatherData();
         
         CurrentConditionsDisplay currentDisplay = new CurrentConditionsDisplay(weatherData);
+        HeatIndexDisplay heatIndex = new HeatIndexDisplay(weatherData);
         
         weatherData.setChanges(80, 65, 30.4f);
         weatherData.setChanges(82, 70, 29.2f);

@@ -13,7 +13,7 @@ import controler.WeatherData;
  * 
  * @author 
  */
-public class ForecastDisplay extends Observer implements Display {
+public class ForecastDisplay implements Observer, Display {
     
     public void display() {
         

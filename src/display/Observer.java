@@ -13,8 +13,10 @@ import controler.WeatherData;
  * 
  * @author 
  */
-public abstract class Observer {
+public interface Observer {
    
     public abstract void update(Subject s);
-
+    
+    //public abstract void update(float temperature, float humidity, float pressure);
+    
 }

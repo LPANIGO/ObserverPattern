@@ -14,7 +14,7 @@ import display.Observer;
  * 
  * @author 
  */
-public class WeatherData extends Subject {
+public class WeatherData implements Subject {
     
     private float temperature;
     private float humidity;
@@ -47,6 +47,13 @@ public class WeatherData extends Subject {
             o.update(this);
         }
     }
+    /*
+    public void notifyObservers() {
+        for (int i = 0; i < observers.size(); i++) {
+            Observer observer = (Observer)observers.get(i);
+            observer.update(temperature, humidity, pressure);
+        }
+    }*/
     
     public void measurementsChanged() {
         notifyObserver();
