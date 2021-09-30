@@ -19,6 +19,7 @@ public class WeatherData implements Subject {
     private float temperature;
     private float humidity;
     private float pressure;
+    private boolean changed;
     
     private List<Observer> observers;
     
@@ -33,20 +34,17 @@ public class WeatherData implements Subject {
     public void deletObserver(Observer o) {
         observers.remove(o);
     }
-    /*
-    public void removeObserver(Observer o) {
-        int i = observers.indexOf(o);
-        if (i >= 0) {
-        observers.remove(i);
-        }
-    }
-    */
     
     public void notifyObserver() {
-        for (Observer o: observers) {
-            o.update(this);
-        }
+        if (changed) {
+            for (Observer o: observers) {
+                o.update(this);
+            }
+            System.out.println();
+            changed = false;
+        }  
     }
+    
     /*
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
@@ -56,14 +54,19 @@ public class WeatherData implements Subject {
     }*/
     
     public void measurementsChanged() {
+        setChanged();
         notifyObserver();
     }
     
-    public void setChanges(float temperature, float humidity, float pressure) {
+    public void setMeasurements(float temperature, float humidity, float pressure) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
         measurementsChanged();
+    }
+    
+    private void setChanged() {
+        changed = true;
     }
     
     public float getTemperature() {
@@ -76,7 +79,5 @@ public class WeatherData implements Subject {
 
     public float getPressure() {
         return pressure;
-    }
-    
-    
+    } 
 }

@@ -19,10 +19,12 @@ public class Main {
         
         CurrentConditionsDisplay currentDisplay = new CurrentConditionsDisplay(weatherData);
         HeatIndexDisplay heatIndex = new HeatIndexDisplay(weatherData);
+        ForecastDisplay forecastDisplay = new ForecastDisplay(weatherData);
+        StatisticsDisplay statisticsDisplay = new StatisticsDisplay(weatherData);
         
-        weatherData.setChanges(80, 65, 30.4f);
-        weatherData.setChanges(82, 70, 29.2f);
-        weatherData.setChanges(78, 90, 29.2f);  
+        weatherData.setMeasurements(80, 65, 30.4f);
+        weatherData.setMeasurements(82, 70, 29.2f);
+        weatherData.setMeasurements(78, 90, 29.2f);  
     }
     
 }

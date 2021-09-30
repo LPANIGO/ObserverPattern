@@ -25,6 +25,6 @@ public interface Subject {
     
     public abstract void notifyObserver();
     
-    public abstract void setChanges(float temperature, float humidity, float pressure);
+    public abstract void setMeasurements(float temperature, float humidity, float pressure);
 }
 
